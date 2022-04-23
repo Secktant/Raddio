@@ -3,25 +3,36 @@ package ru.netology.domain;
 public class Radio {
 
     private int currentVolume;
+
     private int currentStation;
+
+    private int numberOfStations;
+
+    private int quantityVolume;
+
+    private int minVolume = 0;
+
+    private int maxVolume = 100;
+
 
     public int getCurrentVolume() {
         return currentVolume;
     }
 
     public void setReduceTheVolume(int currentVolume) {
-        if (currentVolume < 0) {
+        if (currentVolume < minVolume) {
             return;
         }
-        if (currentVolume > 10) {
-            currentVolume = 10;
+        if (currentVolume >= maxVolume) {
+            currentVolume = maxVolume;
         }
         this.currentVolume = currentVolume;
 
     }
 
     public void inCreaseVolume() {
-        if (currentVolume == 10) {
+        if (currentVolume == maxVolume) {
+            this.currentVolume = maxVolume;
             return;
         }
         setReduceTheVolume(currentVolume);
@@ -30,7 +41,7 @@ public class Radio {
 
 
     public void lowerVolume() {
-        if (currentVolume == 0) {
+        if (currentVolume == minVolume) {
             return;
         } else {
             setReduceTheVolume(currentVolume);
@@ -39,6 +50,10 @@ public class Radio {
 
     }
 
+    public Radio (int minVolume, int maxVolume) {
+        this.minVolume = minVolume;
+        this.maxVolume = maxVolume;
+    }
 
     public int getCurrentStation() {
         return currentStation;
@@ -48,15 +63,23 @@ public class Radio {
         if (currentStation < 0) {
             return;
         }
-        if (currentStation > 9) {
-            currentStation = 9;
+        if (currentStation <= numberOfStations) {
+            this.currentStation = currentStation;
+        } else {
+            this.currentStation = numberOfStations;
         }
-        this.currentStation = currentStation;
+        if (currentStation == 0) {
+            currentStation = 0;
+        } else {
+            if (currentStation == numberOfStations) {
+                this.currentStation = numberOfStations - 1;
+            }
+        }
     }
 
     public void backStation() {
         if (currentStation == 0) {
-            currentStation = 9;
+            currentStation = numberOfStations;
         } else {
             setCurrentStation(currentStation);
             this.currentStation = currentStation - 1;
@@ -66,12 +89,21 @@ public class Radio {
     }
 
     public void nextStation() {
-        if (currentStation == 9) {
-            currentStation = 0;
+        if (currentStation == numberOfStations - 1) {
+            this.currentStation = 0;
         } else {
             setCurrentStation(currentStation);
             this.currentStation = currentStation + 1;
         }
+    }
+
+    public Radio(int numberOfStations) {
+        this.numberOfStations = numberOfStations;
+
+    }
+
+    public Radio() {
+        numberOfStations = 10;
     }
 
 
