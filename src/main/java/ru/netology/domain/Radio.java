@@ -8,8 +8,6 @@ public class Radio {
 
     private int numberOfStations;
 
-    private int quantityVolume;
-
     private int minVolume = 0;
 
     private int maxVolume = 100;
@@ -33,10 +31,11 @@ public class Radio {
     public void inCreaseVolume() {
         if (currentVolume == maxVolume) {
             this.currentVolume = maxVolume;
-            return;
+        } else {
+            setReduceTheVolume(currentVolume);
+            this.currentVolume = currentVolume + 1;
         }
-        setReduceTheVolume(currentVolume);
-        this.currentVolume = currentVolume + 1;
+
     }
 
 
@@ -48,11 +47,6 @@ public class Radio {
             this.currentVolume = currentVolume - 1;
         }
 
-    }
-
-    public Radio (int minVolume, int maxVolume) {
-        this.minVolume = minVolume;
-        this.maxVolume = maxVolume;
     }
 
     public int getCurrentStation() {
