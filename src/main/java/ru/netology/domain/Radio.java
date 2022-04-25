@@ -60,7 +60,7 @@ public class Radio {
         if (currentStation <= numberOfStations) {
             this.currentStation = currentStation;
         } else {
-            this.currentStation = numberOfStations;
+            this.currentStation = numberOfStations - 1;
         }
         if (currentStation == 0) {
             currentStation = 0;

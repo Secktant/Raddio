@@ -105,12 +105,12 @@ class RadioTest {
     }
 
     @Test
-    void shouldSetCurrentStationMoreNine() {
+    void shouldSetCurrentStationMoreMax() {
         Radio radio = new Radio();
 
-        radio.setCurrentStation(11);
+        radio.setCurrentStation(15);
 
-        int expected = 10;
+        int expected = 9;
         int actual = radio.getCurrentStation();
 
         assertEquals(expected, actual);
