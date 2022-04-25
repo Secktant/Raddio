@@ -64,11 +64,11 @@ public class Radio {
         }
         if (currentStation == 0) {
             currentStation = 0;
-        } else {
-            if (currentStation == numberOfStations) {
-                this.currentStation = numberOfStations - 1;
-            }
         }
+        if (currentStation == numberOfStations) {
+            this.currentStation = numberOfStations - 1;
+        }
+
     }
 
     public void backStation() {
